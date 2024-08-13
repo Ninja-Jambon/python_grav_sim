@@ -111,15 +111,12 @@ def main():
 
     system = System(canvas)
 
-    earth = Planet(canvas, 6371000, 5.972e24, "green", 4_000_000, 30_000_000)
-    moon = Planet(canvas, 1737400, 7.348e22, "grey", 4_000_000 + 384_400_000, 30_000_000)
-    iss = Planet(canvas, 1737400, 400_000, "grey", 4_000_000 + 408_000, 30_000_000)
+    earth = Planet(canvas, 6371000, 5.972e24, "green", 0, 0)
+    moon = Planet(canvas, 1737400, 7.348e22, "grey", 384_400_000, 0)
 
     system.add(earth)
     system.add(moon)
-    system.add(iss)
 
-    iss.orbit(earth)
     moon.orbit(earth)
 
     while True:
