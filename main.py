@@ -26,10 +26,10 @@ class Planet:
         self.x += self.dx * dt
         self.y += self.dy * dt
 
-        x1 = (self.x + self.size) / scale + WIDTH / 2
-        y1 = (self.y + self.size) / scale + HEIGHT / 2
-        x2 = (self.x + self.size * 3) / scale + WIDTH / 2
-        y2 = (self.y + self.size * 3) / scale + HEIGHT / 2
+        x1 = (self.x - self.size) / scale + WIDTH / 2
+        y1 = (self.y - self.size) / scale + HEIGHT / 2
+        x2 = (self.x + self.size) / scale + WIDTH / 2
+        y2 = (self.y + self.size) / scale + HEIGHT / 2
 
         self.canvas.create_oval(x1, y1, x2, y2, fill=self.color)
 
@@ -62,8 +62,6 @@ class Planet:
         G = 6.67e-11
         M = planet.mass
         r = sqrt((self.x - planet.x)**2 + (self.y - planet.y)**2)
-
-        print(r)
 
         v = sqrt(G * M / r)
 
