@@ -70,6 +70,11 @@ class Planet:
         n_x = vec_y * -1
         n_y = vec_x * 1
 
+        n_len = sqrt(n_x ** 2 + n_y ** 2)
+
+        n_x /= n_len
+        n_y /= n_len
+
         self.set_initial_velocity(n_x * v, n_y * v)
 
 class System():
@@ -95,6 +100,7 @@ class System():
 
 def main():
     window = Tk()
+    window.title("Simple Grav Sim")
 
     canvas = Canvas(window, bg="black", width=WIDTH, height=HEIGHT)
     canvas.pack()
