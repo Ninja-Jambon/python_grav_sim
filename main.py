@@ -2,8 +2,8 @@ from tkinter import *
 from math import sqrt
 from time import sleep
 
-WIDTH = 900
-HEIGHT = 600
+WIDTH = 1400
+HEIGHT = 800
 
 class Planet:
     def __init__(self, canvas, size, mass, color, x, y):
@@ -96,8 +96,6 @@ class System():
 def main():
     window = Tk()
 
-    fps_limit = 75
-
     canvas = Canvas(window, bg="black", width=WIDTH, height=HEIGHT)
     canvas.pack()
 
@@ -126,10 +124,10 @@ def main():
     blue_moon.orbit(earth)
 
     while True:
-        system.update_all(time.get() / fps_limit, scale.get())
+        system.update_all(time.get() / fps.get(), scale.get())
         window.update_idletasks()
         window.update()
-        sleep(1 / fps_limit)
+        sleep(1 / fps.get())
 
 
 if __name__ == "__main__":
