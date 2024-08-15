@@ -62,10 +62,15 @@ class Planet:
         G = 6.67e-11
         M = planet.mass
         r = sqrt((self.x - planet.x)**2 + (self.y - planet.y)**2)
-
         v = sqrt(G * M / r)
 
-        self.set_initial_velocity(0, v)
+        vec_x = (self.x - planet.x) / r
+        vec_y = (self.y - planet.y) / r
+
+        n_x = vec_y * -1
+        n_y = vec_x * 1
+
+        self.set_initial_velocity(n_x * v, n_y * v)
 
 class System():
     def __init__(self, canvas):
@@ -109,13 +114,16 @@ def main():
 
     system = System(canvas)
 
-    earth = Planet(canvas, 6371000, 5.972e24, "green", 0, 0)
-    moon = Planet(canvas, 1737400, 7.348e22, "grey", 384_400_000, 0)
+    earth = Planet(canvas, 6_371_000, 5.972e24, "green", 0, 0)
+    moon = Planet(canvas, 1_737_400, 7.348e22, "grey", 384_400_000, 80_000_000)
+    blue_moon = Planet(canvas, 837_400, 10_000, "blue", 400_000, 80_000_000)
 
     system.add(earth)
     system.add(moon)
+    system.add(blue_moon)
 
     moon.orbit(earth)
+    blue_moon.orbit(earth)
 
     while True:
         system.update_all(time.get() / fps_limit, scale.get())
